@@ -1,0 +1,36 @@
+{
+  "description": "This module adds common functions to the catalog.",
+  "checksums": {
+    "manifests/user_add.pp": "4a6b2f159ae1d37086d504579a70daac",
+    "manifests/time.pp": "455c0ec065c0b5bba3b470429fb6c6d6",
+    "manifests/swapfile.pp": "f73ab6a90c4110637a9d84d6f4bdf453",
+    "manifests/bash_alias.pp": "e7dfd9ab026006c4951152365eb55a3a",
+    "manifests/repo_puppetlabs.pp": "f0bb074a1869b28acbed880a01743650",
+    "Modulefile": "dc22b1b7895ac15103abf7386a947e49",
+    "CREDITS": "ed3b4b7d9c7ce61042b0e3c17ece19b9",
+    "NOTICE": "b70516c106beaee3679e427d486ab58b",
+    "manifests/wget.pp": "ac521542b852476c119765a13b287533",
+    "README.rdoc": "11785a097ce538647db854ff4319bac6",
+    "COPYING": "b61584fc82c890be58a123372f2b831f",
+    "manifests/init.pp": "4dd69bf53a6ec9712bae385c246d22b4",
+    "manifests/users.pp": "4ed82ce3c994b7adb27256f5e1b4a49d",
+    "lib/facter/facter_dot_d.rb": "926b2c2e886a43c615d7663029d43595",
+    "manifests/repo_vlad.pp": "e6ca579c8e3052fc4b90016f991b225d"
+  },
+  "project_page": "https://github.com/vladgh/puppet-module-common",
+  "license": "Apache 2.0",
+  "source": "https://github.com/vladgh/puppet-module-common",
+  "version": "1.0.0",
+  "types": [
+
+  ],
+  "author": "Vlad Ghinea",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 2.3.1"
+    }
+  ],
+  "summary": "This module adds common functions to the catalog.",
+  "name": "vladgh-common"
+}
