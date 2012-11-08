@@ -29,6 +29,9 @@
 #
 class common {
 
+  # Remove annoyances
+  include common::annoyances
+
   # Deb Packages Storage
   $debs_dir = '/usr/src'
 
