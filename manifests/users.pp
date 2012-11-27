@@ -34,7 +34,7 @@
 # * Vlad Ghinea <mailto:vgit@vladgh.com>
 #
 class common::users(
-  $users = hiera_hash('users', 'none')
+  $users = hiera_hash('common::users', 'none')
 ) {
 
   if $users != 'none' {
