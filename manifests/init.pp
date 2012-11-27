@@ -32,11 +32,11 @@ class common {
   # Remove annoyances
   include common::annoyances
 
-  # Deb Packages Storage
-  $debs_dir = '/usr/src'
+  # Common Directories Storage
+  $debs_dir    = hiera('debs_dir', '/usr/src')
+  $scripts_dir = hiera('script_dir', '/usr/scripts')
 
   # Create a folder for scripts
-  $scripts_dir = '/usr/scripts'
   file {'Scripts Folder':
     ensure  => directory,
     path    => $scripts_dir,

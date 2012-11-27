@@ -5,34 +5,27 @@
 #
 # === Parameters
 #
-# [*ensure*]
+# [*jobs*]
 #   String. Controls if the managed resources shall be <tt>present</tt> or
 #   <tt>absent</tt>.
 #   Defaults to <tt>present</tt>.
-#
-# [*command*]
-#   String. The command to be aliased.
-#   Defaults to <tt>empty</tt>.
-#
-# [*user*]
-#   String. The user for which the command will be aliased.
-#   Defaults to <tt>root</tt>.
 #
 #
 # === Examples
 #
 # * Installation:
-#     common::bash_alias {'update_system':
-#       command => 'sudo apt-get update && sudo apt-get upgrade',
-#       user    => 'myname',
-#     }
+#     include common::cron_jobs
 #
-# * Removal/decommissioning:
-#     common::bash_alias {'update_system':
-#       ensure  => 'absent',
-#       command => 'sudo apt-get update && sudo apt-get upgrade',
-#       user    => 'myname',
-#     }
+#   Hiera Data:
+#     ---
+#     # Cron Jobs
+#     cron_jobs:
+#      'Example Job':
+#       ensure: present
+#       command: 'echo'
+#       user: 'root'
+#       hour: '*/6'
+#       minute: '30'
 #
 #
 # === Authors
