@@ -60,10 +60,14 @@ class common {
     'ntp',
     'ntpdate',
     'python-software-properties',
+    'build-essential',
+    'ruby',
+    'ruby-dev',
+    'rubygems',
     'libxml2',
     'libxml2-dev',
-    'libxslt1.1',
-    'libxslt1-dev'
+    'libxslt',
+    'libxslt-dev'
   ]
 
   case $::operatingsystem {
