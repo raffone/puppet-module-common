@@ -64,10 +64,8 @@ class common {
     'ruby',
     'ruby-dev',
     'rubygems',
-    'libxml2',
     'libxml2-dev',
-    'libxslt',
-    'libxslt-dev'
+    'libxslt1-dev'
   ]
 
   case $::operatingsystem {
