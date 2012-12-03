@@ -29,11 +29,14 @@ class common::repo_puppetlabs {
     destination => $deb_path,
   }
 
-  package{'PuppetLabs Release':
-    ensure   => present,
-    provider => dpkg,
-    source   => $deb_path,
-    require  => Common::Wget ['PuppetLabs Release'],
+  exec {'Install PuppetLabs Release':
+    command => "/usr/bin/dpkg -i ${deb_path}",
+    creates => [
+      '/etc/apt/sources.list.d/puppetlabs.list',
+      '/etc/apt/trusted.gpg.d/puppetlabs-keyring.gpg'
+    ],
+    require => Common::Wget ['PuppetLabs Release'],
+    notify  => Class['apt::update'],
   }
 
   #apt::source { 'puppetlabs':
