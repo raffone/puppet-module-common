@@ -21,15 +21,18 @@
 #
 class common::repo_puppetlabs {
 
+  $release_deb = "puppetlabs-release-${::lsbdistcodename}.deb"
+  $deb_path = "${common::debs_dir}/${release_deb}"
+
   common::wget {'PuppetLabs Release':
-    source      => "http://apt.puppetlabs.com/puppetlabs-release-${::lsbdistcodename}.deb",
-    destination => $common::debs_dir,
+    source      => "http://apt.puppetlabs.com/${release_deb}",
+    destination => $deb_path,
   }
 
   package{'PuppetLabs Release':
     ensure   => present,
     provider => dpkg,
-    source   => "${common::debs_dir}/puppetlabs-release-${::lsbdistcodename}.deb",
+    source   => $deb_path,
     require  => Common::Wget ['PuppetLabs Release'],
   }
 
