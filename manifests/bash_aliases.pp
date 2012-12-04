@@ -37,6 +37,8 @@ class common::bash_aliases(
   $aliases = hiera_hash('common::bash_aliases', 'none')
 ) {
 
+  require common::users
+
   if $aliases != 'none' {
     create_resources(common::bash_alias, $aliases)
   }
