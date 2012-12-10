@@ -34,7 +34,7 @@ class common {
 
   # Common Directories Storage
   $debs_dir    = hiera('debs_dir', '/usr/src')
-  $scripts_dir = hiera('script_dir', '/usr/scripts')
+  $scripts_dir = hiera('scripts_dir', '/usr/scripts')
 
   # Create a folder for scripts
   file {'Scripts Folder':
@@ -47,6 +47,7 @@ class common {
     source  => ["${source1}/scripts",
                 "${source2}/scripts",
                 "${source3}/scripts",
+                "${source4}/scripts",
                 'puppet:///modules/common/empty'],
   }
 
