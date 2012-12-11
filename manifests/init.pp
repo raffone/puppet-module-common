@@ -3,9 +3,16 @@
 # This class adds common functions and variables to the catalog. It also
 # installs a set of useful packages for Ubuntu.
 #
-# Read more about the custom mount points and file sources in the main
-# {README}[http://j.mp/TAEVWT] file.
+# Custom functions:
 #
+# * facter_dot_d: Facter plugin that loads facts from /etc/facter/facts.d
+#   and /etc/puppetlabs/facter/facts.d.
+#   (https://github.com/vladgh/puppet-module-common/blob/master/lib/facter/facter_dot_d.rb)
+#
+# * sources_array: It looks for the 'file_source_hierarchy' array defined in
+#   hiera or in the top scope to generate an array of complete puppet file
+#   server URI.
+#   (https://github.com/vladgh/puppet-module-common/blob/master/lib/puppet/parser/functions/sources_array.rb)
 #
 # === Parameters
 #
@@ -42,13 +49,14 @@ class common {
     path    => $scripts_dir,
     recurse => true,
     force   => true,
+    purge   => true,
     owner   => 'root',
     group   => 'root',
-    source  => ["${source1}/scripts",
-                "${source2}/scripts",
-                "${source3}/scripts",
-                "${source4}/scripts",
-                'puppet:///modules/common/empty'],
+    source  => sources_array(
+      $::private_files,
+      'scripts',
+      'puppet:///modules/common/empty'
+    ),
   }
 
   # Install essential Ubuntu packages
