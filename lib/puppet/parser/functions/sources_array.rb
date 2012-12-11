@@ -47,7 +47,7 @@ Would result in:
 
   # Check arguments
   raise(Puppet::ParseError, "sources(): Wrong number of arguments " +
-    "given (#{arguments.size} for 2)") if arguments.size != 2
+    "given (#{arguments.size} for 2)") if ( arguments.size < 2 or arguments.size > 3 )
 
   # Arguments
   mount_point = arguments[0]
