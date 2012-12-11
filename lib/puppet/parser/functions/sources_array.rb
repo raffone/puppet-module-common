@@ -17,20 +17,26 @@ It takes each element in this array and generates a complete puppet file server 
 
 *Example:*
 
-    # /var/lib/hiera/common.yaml
-    ---
-    file_source_hierarchy:
-     - %{::fqdn}
-     - %{::domain}
-     - 'common'
+    # /etc/puppet/manifests/site.pp
+    $file_source_hierarchy = [
+      $::fqdn,
+      $::domain,
+      'common'
+    ]
 
+    # Private files mount point
+    $private_files = "modules/example_module"
+
+    # /etc/puppet/modules/example_module/manifests/init.pp
+    ...
     file { "/tmp/example.txt":
       source => sources_array(
-        "modules/example_module",
+        $::private_files,
         'example.txt',
         'puppet:///modules/example_module/example.txt'
       )
     }
+    ...
 
 Would result in:
 
@@ -47,34 +53,32 @@ Would result in:
 
   # Check arguments
   raise(Puppet::ParseError, "sources(): Wrong number of arguments " +
-    "given (#{arguments.size} for 2)") if arguments.size < 2
+    "given (#{arguments.size} for 2 or 3)")  unless arguments.size.between?(2, 3)
 
   # Arguments
   mount_point = arguments[0]
   path = arguments[1]
   default_source = arguments[2]
 
-  # Load hiera
-  Puppet::Parser::Functions.function('hiera')
-
   # Lookup file_source_hierarchy
-  sources = function_hiera([
-    'file_source_hierarchy',
-    lookupvar('::file_source_hierarchy')
-  ])
+  sources = lookupvar('::file_source_hierarchy')
 
+  # Create an Array object
   sources_array = Array.new
 
+  # Push each element from the sources array
   if sources.is_a?(Array)
     sources.each do |source|
       sources_array.push "puppet:///#{mount_point}/#{source}/#{path}"
     end
   end
 
+  # Optional default value
   if default_source
     sources_array.push default_source
   end
 
+  # Return final array
   return sources_array
 
   end
