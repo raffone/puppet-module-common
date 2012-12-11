@@ -23,7 +23,7 @@
     "NOTICE": "b70516c106beaee3679e427d486ab58b",
     "README.rdoc": "11785a097ce538647db854ff4319bac6",
     "lib/facter/facter_dot_d.rb": "926b2c2e886a43c615d7663029d43595",
-    "lib/puppet/parser/functions/sources_array.rb": "cc756b77c38fc32943c7b0b97ae66827",
+    "lib/puppet/parser/functions/sources_array.rb": "c10404b7084a1bce5dc8483bad72bea9",
     "manifests/annoyances.pp": "272a584e7b0d004b75f3448e850a7f75",
     "manifests/bash_alias.pp": "e7dfd9ab026006c4951152365eb55a3a",
     "manifests/bash_aliases.pp": "92695bb2089283944948b888fccf1af7",
