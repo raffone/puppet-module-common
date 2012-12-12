@@ -64,7 +64,7 @@ Would result in:
   sources = lookupvar('::file_source_hierarchy')
 
   # Create an Array object
-  sources_array = Array.new
+  sources_array = []
 
   # Push each element from the sources array
   if sources.is_a?(Array)
