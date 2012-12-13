@@ -61,8 +61,9 @@ class common {
 
   # Install essential Ubuntu packages
   $ubuntu_packages=[
-    'htop',
     'vim-nox',
+    'screen',
+    'htop',
     'lynx',
     'unzip',
     'zip',
