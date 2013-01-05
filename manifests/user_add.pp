@@ -64,14 +64,17 @@ define common::user_add (
   }
 
   $sudo_config_dir = '/etc/sudoers.d'
+  $home            = "/home/${name}"
 
+  # User
   user {$name:
     ensure     => $ensure,
-    home       => "/home/${name}",
+    home       => $home,
     shell      => '/bin/bash',
     managehome => true,
   }
 
+  # Key
   if $ssh_key {
     ssh_authorized_key {"SSH_${name}":
       ensure  => $ensure,
@@ -83,6 +86,7 @@ define common::user_add (
     }
   }
 
+  # Sudo
   case $sudo {
     true: {
       file {"Sudo ${name}":
@@ -115,5 +119,18 @@ define common::user_add (
     }
     default: { fail('Unknown sudo value') }
   }
+
+  # Dotfiles
+  file {$home:
+    ensure => directory,
+    owner => $name,
+    group => $name,
+    source  => sources_array(
+      $::private_files,
+      $home,
+      'puppet:///modules/common/empty'
+    ),
+  }
+
 }
 
