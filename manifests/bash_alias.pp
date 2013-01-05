@@ -59,6 +59,7 @@ define common::bash_alias(
     ensure => $ensure,
     path   => $file,
     line   => "alias ${name}=\'${command}\'",
+    match  => "^alias ${name}=\'.*\'$",
   }
 }
 
