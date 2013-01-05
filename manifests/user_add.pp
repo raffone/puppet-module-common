@@ -122,10 +122,11 @@ define common::user_add (
 
   # Dotfiles
   file {$home:
-    ensure => directory,
-    owner  => $name,
-    group  => $name,
-    source => sources_array(
+    ensure  => directory,
+    recurse => true,
+    owner   => $name,
+    group   => $name,
+    source  => sources_array(
       $::private_files,
       $home,
       'puppet:///modules/common/empty'
