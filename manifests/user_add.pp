@@ -120,18 +120,5 @@ define common::user_add (
     default: { fail('Unknown sudo value') }
   }
 
-  # Dotfiles
-  file {$home:
-    ensure  => directory,
-    recurse => true,
-    owner   => $name,
-    group   => $name,
-    source  => sources_array(
-      $::private_files,
-      $home,
-      'puppet:///modules/common/empty'
-    ),
-  }
-
 }
 
