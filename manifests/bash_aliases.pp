@@ -1,8 +1,9 @@
 # == Class:common::bash_aliases
 #
-# This class parses a <tt>users</tt> hash from Hiera (if present), and passes it
-# on to the <tt>common::user_add</tt> definition in order to create users on the
-# system. See <tt>common::user_add</tt> definition for allowed keys and values.
+# This class parses a <tt>common::bash_aliases</tt> hash from Hiera,
+# and passes it on to the <tt>common::bash_alias</tt> definition in order to
+# create bash aliases on the system. See <tt>common::bash_alias</tt>
+# definition for allowed keys and values.
 #
 #
 # === Parameters
@@ -13,17 +14,14 @@
 # === Examples
 #
 # * Hiera Hash (use one space for indentation):
-#     users:
-#      myname:
-#       ssh_key: 'r6uZ...WEEw=='
-#       ssh_key_comment: 'My_RSA_Key'
-#       sudo: true
-#       priority: 99
+#     common::bash_aliases:
+#       'my_alias':
+#         command: '/usr/bin/my_command'
+#         user: 'my_name'
+#       'my_global_alias':
+#         command: '/usr/bin/my_command'
+#         user: 'global'
 #
-# * Hiera Hash (Removal/decommissioning):
-#     users:
-#      myname:
-#       ensure: absent
 #
 # * Instalation:
 #     include common::users

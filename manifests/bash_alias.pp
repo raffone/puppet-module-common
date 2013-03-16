@@ -16,6 +16,7 @@
 #
 # [*user*]
 #   String. The user for which the command will be aliased.
+#   You can use <tt>global</tt> to add an alias to the global bashrc file.
 #   Defaults to <tt>root</tt>.
 #
 #
@@ -51,6 +52,7 @@ define common::bash_alias(
   }
 
   case $user {
+    global: {$file = '/etc/bash.bashrc'}
     root: {$file = '/root/.bashrc'}
     default: {$file = "/home/${user}/.bashrc"}
   }
