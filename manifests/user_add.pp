@@ -10,10 +10,11 @@
 #   <tt>absent</tt>.
 #   Defaults to <tt>present</tt>.
 #
-# [*ssh_key*]
-#   String. The public key to enter in the authorized_keys file (the part
-#   between <tt>ssh-rsa ...</tt> and the key comment).
-#   Defaults to <tt>false</tt>.
+# [*groups*]
+#   String. The groups to which the user belongs. The primary group should not
+#   be listed, and groups should be identified by name rather than by GID.
+#   Multiple groups should be specified as an array.
+#   Defaults to <tt>[]</tt>.
 #
 # [*ssh_key_comment*]
 #   String. A comment for the specified key (no spaces).
@@ -52,6 +53,7 @@
 #
 define common::user_add (
   $ensure = 'present',
+  $groups = [],
   $ssh_key = false,
   $ssh_key_comment = 'NO_COMMENT',
   $sudo = false,
@@ -72,6 +74,7 @@ define common::user_add (
     home       => $home,
     shell      => '/bin/bash',
     managehome => true,
+    groups     => $groups,
   }
 
   # Key
