@@ -33,7 +33,7 @@
     "manifests/repo_vlad.pp": "e6ca579c8e3052fc4b90016f991b225d",
     "manifests/swapfile.pp": "f73ab6a90c4110637a9d84d6f4bdf453",
     "manifests/time.pp": "455c0ec065c0b5bba3b470429fb6c6d6",
-    "manifests/user_add.pp": "9436ca6b347fc3f1cfbb39b271cd8e6c",
+    "manifests/user_add.pp": "f5d7796407bba745973fc010d6b5ca40",
     "manifests/users.pp": "e852d4149f5ecffc09aebae5013b1b18",
     "manifests/wget.pp": "ac521542b852476c119765a13b287533"
   }
