@@ -5,9 +5,6 @@ This module adds common functions to the catalog.
 Have a look at the classes and definitions inside the <tt>manifests</tt> folder
 to see what this module does on a node plus usage examples.
 
-Read the main {README}[http://j.mp/TAEVWT] file for important information
-regarding how these modules are organized and what you need to run them.
-
 
 === Compatibility
 
