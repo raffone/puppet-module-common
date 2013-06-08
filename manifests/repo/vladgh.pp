@@ -1,4 +1,4 @@
-# == Class:common::repo_vlad
+# == Class: common::repo::vladgh
 #
 # This class installs Vlad Ghinea's Launchpad Repository.
 # https://launchpad.net/~vladgh/+archive/stable
@@ -12,14 +12,14 @@
 # === Examples
 #
 # * Instalation:
-#     include common::repo_vlad
+#     include common::repo::vladgh
 #
 #
 # === Authors
 #
 # * Vlad Ghinea <mailto:vgit@vladgh.com>
 #
-class common::repo_vlad {
+class common::repo::vladgh {
 
   apt::ppa { 'ppa:vladgh/stable': }
 

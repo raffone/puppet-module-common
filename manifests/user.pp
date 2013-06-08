@@ -1,4 +1,4 @@
-# == Define: common::user_add
+# == Define: common::user
 #
 # This definition adds users, with authorized ssh keys, and a sudo environment.
 #
@@ -34,7 +34,7 @@
 # === Examples
 #
 # * Installation:
-#     common::user_add {'myname':
+#     common::user {'myname':
 #       ssh_key         => 'AAAA.....xyz==',
 #       ssh_key_comment => 'My_RSA_Key',
 #       sudo            => true,
@@ -42,7 +42,7 @@
 #     }
 #
 # * Removal/decommissioning:
-#     common::user_add {'myname':
+#     common::user {'myname':
 #       ensure => 'absent',
 #     }
 #
@@ -51,7 +51,7 @@
 #
 # * Vlad Ghinea <mailto:vgit@vladgh.com>
 #
-define common::user_add (
+define common::user (
   $ensure = 'present',
   $groups = [],
   $ssh_key = false,

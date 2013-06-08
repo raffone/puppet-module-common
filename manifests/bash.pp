@@ -1,4 +1,4 @@
-# == Class:common::bash_aliases
+# == Class:common::bash
 #
 # This class parses a <tt>common::bash_aliases</tt> hash from Hiera,
 # and passes it on to the <tt>common::bash_alias</tt> definition in order to
@@ -31,13 +31,12 @@
 #
 # * Vlad Ghinea <mailto:vgit@vladgh.com>
 #
-class common::bash_aliases(
-  $aliases = hiera_hash('common::bash_aliases', 'none')
+class common::bash(
+  $aliases = hiera_hash('common::bash_aliases', false)
 ) {
 
-  require common::users
-
-  if $aliases != 'none' {
+  #require common::users
+  if $aliases {
     create_resources(common::bash_alias, $aliases)
   }
 }

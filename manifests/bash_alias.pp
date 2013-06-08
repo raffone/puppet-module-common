@@ -12,12 +12,12 @@
 #
 # [*command*]
 #   String. The command to be aliased.
-#   Defaults to <tt>empty</tt>.
+#   Defaults to <tt>nil</tt>.
 #
 # [*user*]
 #   String. The user for which the command will be aliased.
-#   You can use <tt>global</tt> to add an alias to the global bashrc file.
-#   Defaults to <tt>root</tt>.
+#   If not specified the alias is added to the global bashrc file.
+#   Defaults to <tt>nil</tt>.
 #
 #
 # === Examples
@@ -42,8 +42,8 @@
 #
 define common::bash_alias(
   $ensure = 'present',
-  $command = '',
-  $user = 'root',
+  $command = nil,
+  $user = nil,
 ) {
 
   # Validate parameters
@@ -52,16 +52,17 @@ define common::bash_alias(
   }
 
   case $user {
-    global: {$file = '/etc/bash.bashrc'}
     root: {$file = '/root/.bashrc'}
+    nil: {$file = '/etc/bash.bashrc'}
     default: {$file = "/home/${user}/.bashrc"}
   }
 
   file_line {"Alias ${name}":
-    ensure => $ensure,
-    path   => $file,
-    line   => "alias ${name}=\'${command}\'",
-    match  => "^alias ${name}=\'.*\'$",
+    ensure  => $ensure,
+    path    => $file,
+    line    => "alias ${name}=\'${command}\'",
+    match   => "^alias ${name}=\'.*\'$",
+    require => Class['common::users']
   }
 }
 

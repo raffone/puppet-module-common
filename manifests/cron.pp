@@ -1,25 +1,24 @@
-# == Define: common::cron_jobs
+# == Define: common::cron
 #
-# This class retrieves cron jobs and parameters from hiera.
+# This class creates cron jobs from a hash of cron resources.
 #
 #
 # === Parameters
 #
 # [*jobs*]
-#   String. Controls if the managed resources shall be <tt>present</tt> or
-#   <tt>absent</tt>.
-#   Defaults to <tt>present</tt>.
+#   Hash. Cron jobs.
+#   Defaults to <tt>hiera_hash('common::cron_jobs', false)</tt>.
 #
 #
 # === Examples
 #
 # * Installation:
-#     include common::cron_jobs
+#     include common::cron
 #
 #   Hiera Data:
 #     ---
 #     # Cron Jobs
-#     cron_jobs:
+#     common::cron_jobs:
 #      'Example Job':
 #       ensure: present
 #       command: 'echo'
@@ -32,8 +31,8 @@
 #
 # * Vlad Ghinea <mailto:vgit@vladgh.com>
 #
-class common::cron_jobs(
-  $jobs = hiera_hash('cron_jobs', undef)
+class common::cron(
+  $jobs = hiera_hash('common::cron_jobs', false)
 ) {
 
   if $jobs {

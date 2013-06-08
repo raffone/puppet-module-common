@@ -2,7 +2,6 @@
 #
 # This class sets the timezone on the server.
 # Look inside the <tt>/usr/share/zoneinfo/</tt> folder for valid values.
-# It also sets the locale of the system to <tt>LANG="en_US.UTF-8"</tt>
 #
 #
 # === Parameters
@@ -38,8 +37,6 @@ class common::time (
           require => Package['tzdata'];
         '/etc/timezone':
           content => "${zone}\n";
-        '/etc/default/locale':
-          content => "LANG=\"en_US.UTF-8\"\n";
       }
     }
     default: {
