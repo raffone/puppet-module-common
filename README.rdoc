@@ -8,7 +8,7 @@ to see what this module does on a node plus usage examples.
 
 === Compatibility
 
-This module is designed to work with Puppet version 2.7.x or newer.
+This module is designed to work with Puppet version 3.x or newer.
 
 
 === Requirements
