@@ -7,4 +7,4 @@ description  'This module adds common functions to the catalog.'
 source       'https://github.com/vladgh/puppet-module-common'
 project_page 'https://github.com/vladgh/puppet-module-common'
 
-dependency   'puppetlabs-stdlib', '>= 4.0.0'
+dependency   'puppetlabs/stdlib', '>= 4.0.0'
