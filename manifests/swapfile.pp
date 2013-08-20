@@ -43,5 +43,12 @@ class common::swapfile(
     unless  => "/sbin/swapon -s | grep ${file}",
   }
 
+  common::line { 'add_fstab_swap':
+    file    => '/etc/fstab',
+    line    => "$file swap swap sw 0 0",
+    ensure  => present,
+    require => Exec ['Attach swap file'],
+  }
+
 }
 
